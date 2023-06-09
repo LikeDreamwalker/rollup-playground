@@ -1,11 +1,13 @@
-declare global {
-  interface Window {
-    rollupSDK: typeof rollupSDK;
-  }
+interface RollupSDK {
+  version: string;
 }
 
-const rollupSDK = {
-  version: '1.0.0'
+interface Window {
+  rollupSDK: RollupSDK;
 }
 
-window.rollupSDK = rollupSDK
+const rollupSDK: RollupSDK = {
+  version: "1.0.0",
+};
+
+window.rollupSDK = rollupSDK;

@@ -2,9 +2,19 @@
   "name": "rollup-playground",
   "version": "1.0.0",
   "description": "A demo for buildingA demo for building a playground in rollup project.",
-  "main": "index.ts",
+  "main": "./dist/index.cjs.js",
+  "module": "./dist/index.esm.js",
+  "types": "./dist/index.d.ts",
+  "type": "module",
+  "files": [
+    "dist"
+  ],
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "rollup -w -c ./rollup.config.dev.js",
+    "playgroundDev": "cd playground && vite && echo 'playground is running'",
+    "start": "concurrently \"npm run dev\" \"npm run playgroundDev\"",
+    "build": "rollup -c ./rollup.config.prod.js"
   },
   "keywords": [
     "rollup",
@@ -25,7 +35,6 @@
     "rollup": "^3.23.0",
     "rollup-plugin-babel": "^4.4.0",
     "rollup-plugin-livereload": "^2.0.5",
-    "rollup-plugin-serve": "^2.0.2",
     "rollup-plugin-terser": "^7.0.2",
     "rollup-plugin-uglify": "^6.0.4",
     "tslib": "^2.5.2"
